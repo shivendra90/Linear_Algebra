@@ -423,28 +423,7 @@ class LinearSystem:
         return f"{rows} by {columns} array."
 
 
-def set_module(module):
-    """Custom decorator for this module."""
-    def decorator(func):
-        if module is not None:
-            func.__module__ = module
-        return func
-    return module
-
-
-@set_module("LinearSystem")
-class LinearError(Exception):
-    """Class for linear algebra errors."""
-    def _raise_linerror_singular(self, err):
-        raise LinearError("Singular matrix.")
-
-    def _raise_linerror_incorr_dims(self, err):
-        raise LinearError("Incorrect number of dimensions.")
-
-    def _raise_linerror_incorr_inp(self, err):
-        raise LinearError("Incorrect input.")
-
-
+# Example
 vec_1 = LinearSystem([[2, -1, 5, 1], [3, 2, 2, -6],
                       [1, 3, 3, -1], [5, -2, -3, 3]])
 vec_1.gauss_jordan([-3, -32, -47, 49])
