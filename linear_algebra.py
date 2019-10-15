@@ -221,7 +221,7 @@ class Line:
             normal_vector = Vector(all_zeros)
         self.normal_vector = normal_vector
 
-    def is_identical(self, other):
+    def is_identical(self, other) -> str:
         """Determines if two lines are equal/overlapping."""
         try:
             x_1 = (self.intercept - self.y_coefficient) / self.x_coefficient
@@ -231,16 +231,14 @@ class Line:
             y_2 = (other.intercept - other.x_coefficient) / other.y_coefficient
 
             if round(x_1, 1) == round(x_2, 1) and round(y_1, 1) == round(y_2, 1):
-                print(f"The set of pairs for equality were found to be {round(x_1, 1), round(y_1, 1)} and {round(x_2, 1), round(y_2, 1)}.")
-                return "Lines are congruent."
+                return f"Congruency pairs {round(x_1, 1), round(y_1, 1)} and {round(x_2, 1), round(y_2, 1)}."
             else:
-                print(f"The x-coordinates were found to be {round(x_1, 1)} and {round(x_2, 1)}.")
-                return "Lines are incongruent."
+                return f"X-coordinates: {round(x_1, 1)} and {round(x_2, 1)}."
 
         except TypeError:
             return "Cannot multiply numbers with alphabets."
         except ValueError:
-            return "Invalid values inserted."
+            return "Invalid values entered."
 
     def is_parallel(self, other):
         """Returns whether two lines are parallel.
@@ -273,7 +271,7 @@ class Line:
 class Plane:
     """Class for a 3 dimensional plane.
 
-    Basically the same Line class with more dimensions and functionality.
+    Basically the same Line class with more dimensions.
     """
 
     def __init__(self, x_coefficient=0.0, y_coefficient=0.0, z_coefficient=0.0, intercept=0.0, normal_vector=None):
@@ -294,13 +292,11 @@ class Plane:
         """Checks if two planes are parallel."""
         if self.x_coefficient == other.x_coefficient and self.y_coefficient == other.y_coefficient and \
                 self.z_coefficient == other.z_coefficient:
-            print(f"Coordinates for these planes were {round(self.x_coefficient, 0), round(self.y_coefficient, 0), round(self.z_coefficient, 0)}"
-                  f" and {round(other.x_coefficient, 0), round(other.y_coefficient, 0), round(other.z_coefficient, 0)}.")
-            return "Planes are parallel."
+            return f"Coordinates for parallelism: {round(self.x_coefficient, 0), round(self.y_coefficient, 0), round(self.z_coefficient, 0)}" \
+                f"and {round(other.x_coefficient, 0), round(other.y_coefficient, 0), round(other.z_coefficient, 0)}."
         else:
-            print(f"Coordinates for these planes were {round(self.x_coefficient, 0), round(self.y_coefficient, 0), round(self.z_coefficient, 0)}"
-                  f" and {round(other.x_coefficient, 0), round(other.y_coefficient, 0), round(other.z_coefficient, 0)}.")
-            return "Planes are not parallel."
+            return f"Planes are not parallel: {round(self.x_coefficient, 0), round(self.y_coefficient, 0), round(self.z_coefficient, 0)}" \
+                  f" and {round(other.x_coefficient, 0), round(other.y_coefficient, 0), round(other.z_coefficient, 0)}."
 
     def is_identical(self, other):  # Works similar to identical lines
         """Determine if two planes are identical."""
@@ -321,11 +317,9 @@ class Plane:
         # Note: Can also be solved through matrix division. If found a common factor, then planes are identical.
 
         if x_1 == x_2 and y_1 == y_2 and z_1 == z_2:
-            print(f"Values found were {x_1, y_1, z_1} and {x_2, y_2, z_2}.")
-            return "Planes are identical."
+            return f"Planes are identical: {x_1, y_1, z_1} and {x_2, y_2, z_2}."
         else:
-            print(f"Values found were {x_1, y_1, z_1} and {x_2, y_2, z_2}.")
-            return "Planes are non-identical."
+            return f"Planes are non-identical: {x_1, y_1, z_1} and {x_2, y_2, z_2}."
 
     def __str__(self):  # Represented as Ax + By + Cz = M
         """Print method for planes."""
